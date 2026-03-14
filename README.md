@@ -13,6 +13,22 @@ Full-stack sports match tracking and prediction MVP: browse matches and odds, sa
 - **Dashboard**: Upcoming count, watchlist count, prediction count, prediction stats (finished matches and accuracy), upcoming list and recent predictions (more when logged in)
 - **Settings**: Change display name and password; changing password forces re-login (login required)
 
+## Live deployment
+
+The app is deployed and usable in the browser:
+
+| What   | URL |
+|--------|-----|
+| **App (frontend)** | [https://frontend-navy-three-61.vercel.app](https://frontend-navy-three-61.vercel.app) |
+| **API (backend)**  | [https://backend-production-203d.up.railway.app](https://backend-production-203d.up.railway.app) |
+| **Health check**   | [https://backend-production-203d.up.railway.app/api/health](https://backend-production-203d.up.railway.app/api/health) |
+
+- **Database**: Neon (PostgreSQL)
+- **Backend**: Railway
+- **Frontend**: Vercel
+
+Deployment steps are in the `docs/` folder: database ([DEPLOY-DATABASE.md](docs/DEPLOY-DATABASE.md)), backend ([DEPLOY-BACKEND.md](docs/DEPLOY-BACKEND.md)), frontend ([DEPLOY-FRONTEND.md](docs/DEPLOY-FRONTEND.md)); overview in [DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
 ## Tech stack
 
 | Layer    | Tech                                                                                |

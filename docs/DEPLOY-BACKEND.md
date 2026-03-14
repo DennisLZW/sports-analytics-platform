@@ -68,11 +68,11 @@ If Railway detects a Node app and runs `npm install` and `npm run build` by defa
 1. In the service, open the **Variables** tab (or **Settings** → **Variables**).
 2. Add these variables (use “Add variable” or “New variable”):
 
-| Name | Value | Note |
-|------|--------|------|
-| `DATABASE_URL` | Your **Neon connection string** (full URL with password) | From Step 1 |
-| `JWT_SECRET` | A long random string (e.g. 32+ characters) | Generate one; e.g. `openssl rand -base64 32` |
-| `PORT` | Leave **empty** or leave as set by Railway | Railway sets `PORT` automatically |
+| Name           | Value                                                    | Note                                         |
+| -------------- | -------------------------------------------------------- | -------------------------------------------- |
+| `DATABASE_URL` | Your **Neon connection string** (full URL with password) | From Step 1                                  |
+| `JWT_SECRET`   | A long random string (e.g. 32+ characters)               | Generate one; e.g. `openssl rand -base64 32` |
+| `PORT`         | Leave **empty** or leave as set by Railway               | Railway sets `PORT` automatically            |
 
 3. Save. Railway will redeploy when variables change.
 
@@ -98,6 +98,7 @@ If Railway detects a Node app and runs `npm install` and `npm run build` by defa
    You should get JSON (e.g. leagues list or empty array).
 
 If you get 404 or 502, check:
+
 - **Root Directory** is `backend`.
 - **Start Command** is `npm run start`.
 - **Variables**: `DATABASE_URL` and `JWT_SECRET` are set; no typos.
@@ -107,15 +108,15 @@ If you get 404 or 502, check:
 
 ## Summary
 
-| Step | What you did |
-|------|----------------------|
-| 2.1 | Pushed code to GitHub. |
-| 2.2 | Created a Railway project and connected the repo. |
-| 2.3 | Set Root Directory to `backend`. |
-| 2.4 | Set Build (with `prisma generate`) and Start (`npm run start`) commands. |
-| 2.5 | Set `DATABASE_URL` and `JWT_SECRET`. |
-| 2.6 | Generated a public URL and copied the backend URL. |
-| 2.7 | Checked `/api/health` (and optionally `/api/leagues`). |
+| Step | What you did                                                             |
+| ---- | ------------------------------------------------------------------------ |
+| 2.1  | Pushed code to GitHub.                                                   |
+| 2.2  | Created a Railway project and connected the repo.                        |
+| 2.3  | Set Root Directory to `backend`.                                         |
+| 2.4  | Set Build (with `prisma generate`) and Start (`npm run start`) commands. |
+| 2.5  | Set `DATABASE_URL` and `JWT_SECRET`.                                     |
+| 2.6  | Generated a public URL and copied the backend URL.                       |
+| 2.7  | Checked `/api/health` (and optionally `/api/leagues`).                   |
 
 **Next:** In Step 3 you’ll deploy the frontend and set its API base URL to this backend URL.
 
