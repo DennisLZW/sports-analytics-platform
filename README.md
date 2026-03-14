@@ -29,6 +29,16 @@ The app is deployed and usable in the browser:
 
 Deployment steps are in the `docs/` folder: database ([DEPLOY-DATABASE.md](docs/DEPLOY-DATABASE.md)), backend ([DEPLOY-BACKEND.md](docs/DEPLOY-BACKEND.md)), frontend ([DEPLOY-FRONTEND.md](docs/DEPLOY-FRONTEND.md)); overview in [DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
+## Architecture
+
+```
+Frontend (React + Vite)
+      ↓ REST API
+Backend (Node.js + Express)
+      ↓ Prisma ORM
+Database (PostgreSQL / Neon)
+```
+
 ## Screenshots
 
 ![Dashboard](images/Dashboard.png)
