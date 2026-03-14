@@ -29,6 +29,16 @@ The app is deployed and usable in the browser:
 
 Deployment steps are in the `docs/` folder: database ([DEPLOY-DATABASE.md](docs/DEPLOY-DATABASE.md)), backend ([DEPLOY-BACKEND.md](docs/DEPLOY-BACKEND.md)), frontend ([DEPLOY-FRONTEND.md](docs/DEPLOY-FRONTEND.md)); overview in [DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
+## Screenshots
+
+![Dashboard](images/Dashboard.png)
+
+![Login](images/Login.png)
+
+![Match](images/Match.png)
+
+![Match detail](images/match2.png)
+
 ## Tech stack
 
 | Layer    | Tech                                                                                |
