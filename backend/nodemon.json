@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/generated"],
+  "exec": "npx tsx src/index.ts"
+}

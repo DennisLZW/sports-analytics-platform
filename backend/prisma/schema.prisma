@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  passwordHash   String
+  name           String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  watchlistItems WatchlistItem[]
+  predictions    Prediction[]
+}
+
+model League {
+  id        String   @id @default(cuid())
+  name      String
+  sportType String?
+  country   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  matches   Match[]
+}
+
+model Match {
+  id             String          @id @default(cuid())
+  leagueId       String
+  league         League          @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  homeTeamName   String
+  awayTeamName   String
+  matchTime      DateTime
+  status         String          // scheduled | live | finished | cancelled
+  homeScore      Int?
+  awayScore      Int?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  odds           MatchOdds[]
+  watchlistItems WatchlistItem[]
+  predictions    Prediction[]
+}
+
+model WatchlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matchId   String
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, matchId])
+  @@index([userId])
+  @@index([matchId])
+}
+
+model Prediction {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matchId         String
+  match           Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  predictedResult String   // home | draw | away
+  confidence      Int?     // 1-10
+  createdAt       DateTime @default(now())
+
+  @@unique([userId, matchId])
+  @@index([userId])
+  @@index([matchId])
+}
+
+model MatchOdds {
+  id         String   @id @default(cuid())
+  matchId    String
+  match      Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  source     String?
+  homeOdds   Float
+  drawOdds   Float?
+  awayOdds   Float
+  recordedAt DateTime @default(now())
+
+  @@index([matchId, recordedAt])
+}
